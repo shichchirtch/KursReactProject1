@@ -71,7 +71,7 @@ function CardContainer({spisokCard}) {
   return <div className="card-container">
     <ul className="card-image">
       {spisokCard.map((item) => (
-          <Card kajdayaCartochka={item} key={item.title}/>
+          <Card kajdayaCartochka={item} key={item.title}/> // даю имя для данных каждой карточки из массива
       ))}
     </ul>
   </div>;
