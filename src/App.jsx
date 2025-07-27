@@ -62,7 +62,7 @@ export default function App() {
   return (
       <>
         <CardContainer spisokCard={cardData} />
-      </>
+      </> // передаю массив в кард контейнер
   );
 }
 
@@ -86,7 +86,8 @@ function Card({kajdayaCartochka}) {
           <h3 className="card-description">{kajdayaCartochka.description}</h3>
           <p className="card-date">{kajdayaCartochka.date}</p>
           <span>
-            <CardTag tagsCard={kajdayaCartochka.tags} />
+            <CardTag tagsCard={kajdayaCartochka.tags}  // Передаю данные только тегов, это список
+            />
           </span>
         </div>
       </main>
@@ -96,7 +97,7 @@ function Card({kajdayaCartochka}) {
 function CardTag({tagsCard}) {
   return (
       <>
-        {tagsCard.map((tag, index) => (
+        {tagsCard.map((tag, index) => (  // распаковываю список мапом
             <p key={index} className="card-tag">{tag}</p>
         ))}
       </>
