@@ -61,39 +61,40 @@ const cardData = [
 export default function App() {
   return (
       <>
-        <CardContainer spisokCard={cardData} />
+        <CardContainer   spisokCard={cardData} />
       </> // передаю массив в кард контейнер
   );
 }
 
 
-function CardContainer({spisokCard}) {
-  return <div className="card-container">
-    <ul className="card-image">
-      {spisokCard.map((item) => (
-          <Card kajdayaCartochka={item} key={item.title}/> // даю имя для данных каждой карточки из массива
-      ))}
-    </ul>
-  </div>;
-}
-
-
-function Card({kajdayaCartochka}) {
+function CardContainer({ spisokCard }) {
   return (
-      <main className="card">
-        <img className="card-image" src={kajdayaCartochka.imageUrl} alt={kajdayaCartochka.title}/>
-        <div>
-          <h3 className="card-description">{kajdayaCartochka.description}</h3>
-          <p className="card-date">{kajdayaCartochka.date}</p>
-          <span>
-            <CardTag tagsCard={kajdayaCartochka.tags}  // Передаю данные только тегов, это список
-            />
-          </span>
-        </div>
-      </main>
+      <div className="card-container">
+        {spisokCard.map((item) => (
+            <Card kajdayaCartochka={item} key={item.title} />
+        ))}
+      </div>
   );
 }
 
+function Card({ kajdayaCartochka }) {
+
+  if (kajdayaCartochka.archived) return ;
+
+  return (
+      <div className="card">
+        <img className="card-image" src={kajdayaCartochka.imageUrl} alt={kajdayaCartochka.title} />
+        <div className="card-content">
+          <h3 className="card-title">{kajdayaCartochka.title}</h3>
+          <p className="card-description">{kajdayaCartochka.description}</p>
+          <p className="card-date">{kajdayaCartochka.date}</p>
+          <div className="card-tags">
+            <CardTag tagsCard={kajdayaCartochka.tags} />
+          </div>
+        </div>
+      </div>
+  );
+}
 function CardTag({tagsCard}) {
   return (
       <>
